@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance Informatique & Home Tech | Ra'anana & Netanya</title>
+    <style>
+        :root {
+            --primary: #0066cc;
+            --secondary: #1a1a2e;
+            --light: #f4f6f9;
+            --success: #25d366;
+        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--light); color: #333; }
+        header { background: var(--secondary); color: white; text-align: center; padding: 40px 20px; }
+        header h1 { margin: 0 0 10px 0; font-size: 2.2em; }
+        header p { font-size: 1.1em; color: #a0a5b5; margin-bottom: 20px; }
+        .badge { background: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9em; display: inline-block; }
+        
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        .price { font-size: 1.4em; font-weight: bold; color: var(--secondary); margin: 15px 0; }
+        
+        .cta-container { text-align: center; margin: 40px 0; }
+        .btn-whatsapp { background-color: var(--success); color: white; text-decoration: none; padding: 15px 30px; border-radius: 30px; font-weight: bold; font-size: 1.2em; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); }
+        .btn-whatsapp:hover { opacity: 0.9; }
+
+        .zones { background: white; padding: 20px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        footer { text-align: center; padding: 20px; color: #777; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="badge">🇫🇷 Service 100% en Français</span>
+        <h1>Informatique & Maison Connectée</h1>
+        <p>Dépannage à domicile et à distance — Ra'anana & Netanya</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="cta-container">
+            <a href="https://wa.me/972000000000?text=Bonjour,%20j%27ai%20besoin%20d%27aide%20pour%20mon%20équipement%20informatique." class="btn-whatsapp" target="_blank">
+                💬 Demander de l'aide sur WhatsApp
+            </a>
+        </div>
+
+        <h2 style="text-align: center; color: var(--secondary);">Nos Services</h2>
+
+        <div class="services">
+            <div class="card">
+                <h3>📺 Android TV & Streaming</h3>
+                <p>Configuration de votre TV, Box Internet, synchronisation télécommande et optimisation du streaming.</p>
+                <div class="price">350 ₪ <small>/ forfait</small></div>
+            </div>
+
+            <div class="card">
+                <h3>🏠 Maison Connectée</h3>
+                <p>Centralisation de vos caméras, lumières, serrures et prises sur une seule application mobile simple.</p>
+                <div class="price">Dès 450 ₪</div>
+            </div>
+
+            <div class="card">
+                <h3>💻 Dépannage à Distance</h3>
+                <p>Prise en main à distance rapide pour nettoyer votre PC/Mac, enlever les virus ou régler un blocage.</p>
+                <div class="price">150 ₪ <small>/ 30 min</small></div>
+            </div>
+
+            <div class="card">
+                <h3>📡 WiFi & Réseau</h3>
+                <p>Élimination des zones sans réseau dans l'appartement ou la maison avec installation WiFi Mesh.</p>
+                <div class="price">300 ₪ <small>+ déplacement</small></div>
+            </div>
+        </div>
+
+        <div class="zones">
+            <h3>📍 Zone d'intervention</h3>
+            <p>Déplacement rapide à domicile sur <strong>Ra'anana</strong>, <strong>Netanya</strong> et la région du Sharon. Services à distance disponibles partout.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 TechHome Israel — Service professionnel Osek Patur</p>
+    </footer>
+
+</body>
+</html>
