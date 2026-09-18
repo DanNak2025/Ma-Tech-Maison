@@ -3,92 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MA-TECH-MAISON | Votre Technologie Domestique, Simplement. | Ra'anana & Netanya</title>
+    <title>Ma-Tech-Maison | Tarifs et Services d'Assistance Informatique</title>
     <style>
+        /* Variables & Reset */
         :root {
-            --primary: #0066cc;
-            --secondary: #1a1a2e;
-            --light: #f4f6f9;
-            --success: #25d366;
-            --action: #ffcc00;
+            --primary: #1E3A8A; /* Bleu profond professionnel */
+            --secondary: #3B82F6; /* Bleu clair */
+            --accent: #10B981; /* Vert validation/WhatsApp */
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --bg-gray: #F3F4F6;
+            --white: #FFFFFF;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: var(--light); color: #333; }
-        header { background: var(--secondary); color: white; text-align: center; padding: 60px 20px; }
-        header h1 { margin: 0 0 10px 0; font-size: 2.5em; }
-        header p { font-size: 1.2em; color: #a0a5b5; margin-bottom: 25px; }
-        .badge { background: var(--primary); padding: 5px 20px; border-radius: 20px; font-size: 0.9em; display: inline-block; }
-        
-        .container { max-width: 1000px; margin: auto; padding: 20px; }
-        
-        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; position: relative; }
-        .card h3 { color: var(--primary); margin-top: 0; }
-        .price { font-size: 1.6em; font-weight: bold; color: var(--secondary); margin: 20px 0; }
-        .card button { background-color: var(--primary); color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; }
-        .card button:hover { background-color: #0055aa; }
-        
-        .cta-container { text-align: center; margin: 60px 0; }
-        .btn-whatsapp { background-color: var(--success); color: white; text-decoration: none; padding: 18px 35px; border-radius: 35px; font-weight: bold; font-size: 1.3em; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
-        .btn-whatsapp:hover { opacity: 0.9; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-gray); color: var(--text-dark); line-height: 1.6; }
 
-        .zones { background: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 40px; }
-        footer { text-align: center; padding: 30px; color: #777; font-size: 0.9em; border-top: 1px solid #e0e0e0; }
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        header h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
+        header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; opacity: 0.9; }
+        .badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 20px; }
+
+        /* CTA Buttons */
+        .btn { display: inline-block; padding: 14px 28px; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; font-size: 1.1rem; }
+        .btn-whatsapp { background-color: var(--accent); color: var(--white); box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3); }
+        .btn-whatsapp:hover { background-color: #059669; transform: translateY(-2px); }
+
+        /* Main Container */
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* Section Titles */
+        .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 40px; font-weight: 700; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-top: -30px; margin-bottom: 40px; font-size: 1.1rem; }
+
+        /* Process Grid (Comment ça marche) */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .process-card { text-align: center; padding: 20px; background: var(--white); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .process-icon { font-size: 2.5rem; background: var(--bg-gray); width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin: 0 auto 15px auto; color: var(--secondary); }
+        .process-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
+
+        /* Pricing Grid */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .pricing-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary); transition: 0.3s; }
+        .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .pricing-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--bg-gray); }
+        .pricing-header h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
+        .price { font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
+        .price span { font-size: 1rem; color: var(--text-light); font-weight: normal; }
+        .pricing-body { padding: 30px 20px; }
+        .pricing-list { list-style: none; margin-bottom: 30px; }
+        .pricing-list li { margin-bottom: 15px; position: relative; padding-left: 30px; color: var(--text-light); }
+        .pricing-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; }
+        .pricing-footer { text-align: center; padding-bottom: 30px; }
+        
+        .pricing-card.premium { border-top: 5px solid var(--primary); transform: scale(1.05); }
+        .pricing-card.premium .pricing-header { background: rgba(59, 130, 246, 0.05); }
+
+        /* Reinsurance Banner */
+        .banner { background: var(--primary); color: var(--white); padding: 40px 20px; text-align: center; border-radius: 12px; margin: 60px 0; }
+        .banner h2 { margin-bottom: 20px; font-size: 1.8rem; }
+
+        /* Footer */
+        footer { background: var(--text-dark); color: var(--white); padding: 40px 20px; text-align: center; font-size: 0.9rem; }
+        footer p { opacity: 0.7; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <header>
-        <span class="badge">🇫🇷 Service 100% en Français</span>
-        <h1>MA-TECH-MAISON</h1>
-        <p>Votre Technologie Domestique, Simplement. Dépannage à distance et à domicile (Ra'anana & Netanya)</p>
+        <div class="badge">📍 Ra'anana & Netanya | 🇫🇷 100% en Français</div>
+        <h1>Ma-Tech-Maison</h1>
+        <p>Assistance informatique à domicile, installation de TV connectée et configuration de maison intelligente. Transparence, pédagogie et tarifs sans surprise.</p>
+        <a href="https://wa.me/972000000000?text=Bonjour,%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20assistance." class="btn btn-whatsapp">📱 Discutons sur WhatsApp</a>
     </header>
 
     <div class="container">
         
-        <div class="cta-container">
-            <a href="https://wa.me/972000000000?text=Bonjour,%20j%27ai%20besoin%20d%27un%20Pack%20Magique%20pour%20ma%20maison." class="btn-whatsapp" target="_blank">
-                💬 COMMANDER VOTRE PACK TECH SUR WHATSAPP
-            </a>
+        <!-- Section Comment ça marche -->
+        <h2 class="section-title">Comment se déroule l'intervention ?</h2>
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-icon">💬</div>
+                <h3>1. Contact & Diagnostic</h3>
+                <p>Envoyez un message sur WhatsApp avec votre problème. Nous établissons un diagnostic rapide et un devis gratuit.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-icon">📅</div>
+                <h3>2. Rendez-vous</h3>
+                <p>Nous convenons d'un horaire qui vous arrange pour une intervention à votre domicile ou une prise en main à distance.</p>
+            </div>
+            <div class="process-card">
+                <div class="process-icon">✅</div>
+                <h3>3. Résolution & Pédagogie</h3>
+                <p>Le problème est réglé ! Je prends le temps de vous expliquer simplement comment tout fonctionne, sans jargon.</p>
+            </div>
         </div>
 
-        <h2 style="text-align: center; color: var(--secondary);">Choisissez Votre Pack Magique</h2>
-
-        <div class="services">
-            <div class="card">
-                <h3>📺 Pack TV Révolution</h3>
-                <p>Installation/configuration Android TV, Apple TV ou Box Internet, optimisation streaming, formation.</p>
-                <div class="price">450 ₪ <small>/ forfait</small></div>
-                <button onclick="window.location.href='https://wa.me/972000000000?text=Je%20veux%20le%20Pack%20TV%20Révolution!'">Commander</button>
+        <!-- Section Grille Tarifaire -->
+        <h2 class="section-title">Nos Tarifs & Prestations</h2>
+        <p class="section-subtitle">Facturation claire. Prix nets, exonérés de TVA (Osek Patur).</p>
+        
+        <div class="pricing-grid">
+            <!-- Carte 1 -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Dépannage à Distance</h3>
+                    <div class="price">150 ₪ <span>/ jusqu'à 30 min</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-list">
+                        <li>Assistance immédiate via écran partagé</li>
+                        <li>Nettoyage de virus et lenteurs (PC/Mac)</li>
+                        <li>Configuration de boîte mail</li>
+                        <li>Problème d'impression ou de mot de passe</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;">Réserver</a>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>🏠 Pack Maison Magique</h3>
-                <p>Configuration de votre Hub, centralisation de 5+ équipements connectés (caméras, lumières, prises).</p>
-                <div class="price">Dès 800 ₪</div>
-                <button onclick="window.location.href='https://wa.me/972000000000?text=Je%20veux%20le%20Pack%20Maison%20Magique!'">Commander</button>
+            <!-- Carte 2 (Mise en avant) -->
+            <div class="pricing-card premium">
+                <div class="pricing-header">
+                    <div class="badge" style="color: var(--primary); background: #DBEAFE; margin-bottom: 10px;">Le plus demandé</div>
+                    <h3>Intervention à Domicile</h3>
+                    <div class="price">300 ₪ <span>/ la 1ère heure</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-list">
+                        <li>Déplacement inclus (Ra'anana / Netanya)</li>
+                        <li>Optimisation réseau WiFi & Box Internet</li>
+                        <li>Diagnostic et réparation matériel</li>
+                        <li>Installation imprimante et périphériques</li>
+                        <li>Heure supplémentaire : 180 ₪</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp">Prendre RDV</a>
+                </div>
             </div>
 
-            <div class="card">
-                <h3>💻 Pack Remote Zen</h3>
-                <p>Contrat annuel : Assistance à distance illimitée (1 intervention/mois max) + support WhatsApp rapide.</p>
-                <div class="price">99 ₪ <small>/ mois</small>Pour voir votre site en ligne, suivez ces étapes :
+            <!-- Carte 3 -->
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Pack Smart TV & Maison</h3>
+                    <div class="price">Dès 350 ₪ <span>/ forfait</span></div>
+                </div>
+                <div class="pricing-body">
+                    <ul class="pricing-list">
+                        <li>Configuration Android TV / Apple TV</li>
+                        <li>Installation domotique (lumières, caméras)</li>
+                        <li>Centralisation sur application mobile</li>
+                        <li>Formation complète pour toute la famille</li>
+                    </ul>
+                </div>
+                <div class="pricing-footer">
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;">Demander un devis</a>
+                </div>
+            </div>
+        </div>
 
-1.  **Si vous avez déjà activé GitHub Pages :**
-    Rendez-vous directement sur cette adresse depuis n'importe quel navigateur (téléphone ou ordinateur) :
-    **`https://dannak2025.github.io/Ma-Tech-Maison/`**[cite: 1]
+        <!-- Bannière de réassurance -->
+        <div class="banner">
+            <h2>Vous avez une demande spécifique ?</h2>
+            <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 20px auto;">Nous proposons également des abonnements annuels pour les seniors et des services sur-mesure pour les transferts de données de vos anciens ordinateurs.</p>
+            <a href="https://wa.me/972000000000" class="btn" style="background: var(--white); color: var(--primary);">Contactez-nous pour en parler</a>
+        </div>
 
----
+    </div>
 
-2.  **Si vous ne l'avez pas encore activé :**
-    *   Dans votre dépôt GitHub, cliquez sur **Settings**[cite: 1] *(en haut à droite)*.
-    *   Dans le menu de gauche, cliquez sur **Pages**.
-    *   Sous **Branch**, choisissez **`main`**[cite: 1] à la place de *None*, puis cliquez sur **Save**.
-    *   Patientez **1 à 2 minutes**, puis rafraîchissez la page : le lien de votre site apparaîtra en haut.
+    <footer>
+        <p><strong>Ma-Tech-Maison</strong> — L'informatique simple, chez vous.</p>
+        <p>Secteurs d'intervention : Ra'anana, Netanya et région du Sharon.</p>
+        <p style="margin-top: 20px; font-size: 0.8rem;">Osek Patur n° [Votre TZ] • Exempt de TVA (פטור ממע"מ לפי סעיף 31(3) לחוק מע"מ)</p>
+    </footer>
 
----
-
-3.  **Pour tester le fichier directement sur votre ordinateur (sans Internet) :**
-    *   Ouvrez le fichier `index.html`[cite: 1] sur GitHub.
-    *   Copiez tout le code, collez-le dans le **Bloc-notes** (Windows) ou **TextEdit** (Mac).
-    *   Enregistrez le fichier sous le nom `site.html`.
-    *   Double-cliquez dessus : il s'ouvrira directement dans votre navigateur web.
+</body>
+</html>
