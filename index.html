@@ -3,186 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma-Tech-Maison | Tarifs et Services d'Assistance Informatique</title>
+    <title>Ma-Tech-Maison | IT Support & Smart Home | Ra'anana & Netanya</title>
     <style>
         /* Variables & Reset */
         :root {
-            --primary: #1E3A8A; /* Bleu profond professionnel */
-            --secondary: #3B82F6; /* Bleu clair */
-            --accent: #10B981; /* Vert validation/WhatsApp */
+            --primary: #1E3A8A;
+            --secondary: #3B82F6;
+            --accent: #10B981;
             --text-dark: #1F2937;
             --text-light: #6B7280;
             --bg-gray: #F3F4F6;
             --white: #FFFFFF;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-gray); color: var(--text-dark); line-height: 1.6; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-gray); color: var(--text-dark); line-height: 1.6; transition: all 0.3s ease; }
 
-        /* Header / Hero Section */
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 60px 20px;
-            text-align: center;
-        }
+        /* Language Switcher */
+        .lang-switcher { background: var(--text-dark); text-align: center; padding: 10px; position: sticky; top: 0; z-index: 1000; }
+        .lang-btn { background: transparent; color: white; border: 1px solid white; padding: 5px 15px; margin: 0 5px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.3s; }
+        .lang-btn:hover, .lang-btn.active { background: var(--secondary); border-color: var(--secondary); }
+
+        /* Header */
+        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); padding: 60px 20px; text-align: center; }
         header h1 { font-size: 2.5rem; margin-bottom: 15px; font-weight: 700; }
         header p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; opacity: 0.9; }
         .badge { background: rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 20px; }
 
-        /* CTA Buttons */
+        /* Buttons */
         .btn { display: inline-block; padding: 14px 28px; border-radius: 8px; font-weight: bold; text-decoration: none; transition: 0.3s; font-size: 1.1rem; }
         .btn-whatsapp { background-color: var(--accent); color: var(--white); box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3); }
         .btn-whatsapp:hover { background-color: #059669; transform: translateY(-2px); }
 
-        /* Main Container */
+        /* Layout */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 20px; font-weight: 700; }
+        .section-subtitle { text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 1.1rem; }
 
-        /* Section Titles */
-        .section-title { text-align: center; font-size: 2rem; color: var(--primary); margin-bottom: 40px; font-weight: 700; }
-        .section-subtitle { text-align: center; color: var(--text-light); margin-top: -30px; margin-bottom: 40px; font-size: 1.1rem; }
+        /* Grids */
+        .process-grid, .pricing-grid { display: grid; gap: 30px; margin-bottom: 60px; }
+        .process-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .pricing-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 
-        /* Process Grid (Comment ça marche) */
-        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .process-card { text-align: center; padding: 20px; background: var(--white); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        /* Cards */
+        .process-card, .pricing-card { background: var(--white); border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .process-icon { font-size: 2.5rem; background: var(--bg-gray); width: 80px; height: 80px; line-height: 80px; border-radius: 50%; margin: 0 auto 15px auto; color: var(--secondary); }
         .process-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
 
-        /* Pricing Grid */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .pricing-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--secondary); transition: 0.3s; }
+        /* Pricing Card Specifics */
+        .pricing-card { padding: 0; overflow: hidden; border-top: 5px solid var(--secondary); transition: 0.3s; }
         .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .pricing-header { padding: 30px 20px; text-align: center; border-bottom: 1px solid var(--bg-gray); }
+        .pricing-card.premium { border-top: 5px solid var(--primary); transform: scale(1.02); }
+        .pricing-header { padding: 30px 20px; border-bottom: 1px solid var(--bg-gray); }
         .pricing-header h3 { font-size: 1.5rem; color: var(--primary); margin-bottom: 10px; }
         .price { font-size: 2.5rem; font-weight: 700; color: var(--text-dark); }
         .price span { font-size: 1rem; color: var(--text-light); font-weight: normal; }
-        .pricing-body { padding: 30px 20px; }
-        .pricing-list { list-style: none; margin-bottom: 30px; }
-        .pricing-list li { margin-bottom: 15px; position: relative; padding-left: 30px; color: var(--text-light); }
-        .pricing-list li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: bold; font-size: 1.2rem; }
-        .pricing-footer { text-align: center; padding-bottom: 30px; }
+        .pricing-body { padding: 30px 20px; text-align: start; } /* Ajusté pour RTL/LTR automatique */
+        .pricing-list { list-style: none; }
+        .pricing-list li { margin-bottom: 15px; position: relative; padding-inline-start: 25px; color: var(--text-light); }
         
-        .pricing-card.premium { border-top: 5px solid var(--primary); transform: scale(1.05); }
-        .pricing-card.premium .pricing-header { background: rgba(59, 130, 246, 0.05); }
+        /* Support RTL pour les puces */
+        html[dir="ltr"] .pricing-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        html[dir="rtl"] .pricing-list li::before { content: '✓'; position: absolute; right: 0; color: var(--accent); font-weight: bold; }
 
-        /* Reinsurance Banner */
+        .pricing-footer { text-align: center; padding-bottom: 30px; }
+
+        /* Banner & Footer */
         .banner { background: var(--primary); color: var(--white); padding: 40px 20px; text-align: center; border-radius: 12px; margin: 60px 0; }
         .banner h2 { margin-bottom: 20px; font-size: 1.8rem; }
-
-        /* Footer */
         footer { background: var(--text-dark); color: var(--white); padding: 40px 20px; text-align: center; font-size: 0.9rem; }
         footer p { opacity: 0.7; margin-bottom: 10px; }
     </style>
 </head>
-<body>
+<body dir="ltr">
+
+    <!-- Sélecteur de langue -->
+    <div class="lang-switcher">
+        <button class="lang-btn active" onclick="setLang('fr')">🇫🇷 Français</button>
+        <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+        <button class="lang-btn" onclick="setLang('he')">🇮🇱 עברית</button>
+    </div>
 
     <header>
-        <div class="badge">📍 Ra'anana & Netanya | 🇫🇷 100% en Français</div>
+        <div class="badge" data-i18n="badge">📍 Ra'anana & Netanya | 🇫🇷 100% en Français</div>
         <h1>Ma-Tech-Maison</h1>
-        <p>Assistance informatique à domicile, installation de TV connectée et configuration de maison intelligente. Transparence, pédagogie et tarifs sans surprise.</p>
-        <a href="https://wa.me/972000000000?text=Bonjour,%20je%20souhaite%20prendre%20rendez-vous%20pour%20une%20assistance." class="btn btn-whatsapp">📱 Discutons sur WhatsApp</a>
+        <p data-i18n="hero_desc">Assistance informatique à domicile, installation de TV connectée et configuration de maison intelligente. Transparence, pédagogie et tarifs sans surprise.</p>
+        <a href="https://wa.me/972000000000" class="btn btn-whatsapp" target="_blank"><span data-i18n="btn_whatsapp">📱 Discutons sur WhatsApp</span></a>
     </header>
 
     <div class="container">
         
-        <!-- Section Comment ça marche -->
-        <h2 class="section-title">Comment se déroule l'intervention ?</h2>
+        <h2 class="section-title" data-i18n="process_title">Comment se déroule l'intervention ?</h2>
         <div class="process-grid">
             <div class="process-card">
                 <div class="process-icon">💬</div>
-                <h3>1. Contact & Diagnostic</h3>
-                <p>Envoyez un message sur WhatsApp avec votre problème. Nous établissons un diagnostic rapide et un devis gratuit.</p>
+                <h3 data-i18n="step1_title">1. Contact & Diagnostic</h3>
+                <p data-i18n="step1_desc">Envoyez un message sur WhatsApp avec votre problème. Nous établissons un diagnostic rapide et un devis gratuit.</p>
             </div>
             <div class="process-card">
                 <div class="process-icon">📅</div>
-                <h3>2. Rendez-vous</h3>
-                <p>Nous convenons d'un horaire qui vous arrange pour une intervention à votre domicile ou une prise en main à distance.</p>
+                <h3 data-i18n="step2_title">2. Rendez-vous</h3>
+                <p data-i18n="step2_desc">Nous convenons d'un horaire qui vous arrange pour une intervention à votre domicile ou une prise en main à distance.</p>
             </div>
             <div class="process-card">
                 <div class="process-icon">✅</div>
-                <h3>3. Résolution & Pédagogie</h3>
-                <p>Le problème est réglé ! Je prends le temps de vous expliquer simplement comment tout fonctionne, sans jargon.</p>
+                <h3 data-i18n="step3_title">3. Résolution & Pédagogie</h3>
+                <p data-i18n="step3_desc">Le problème est réglé ! Je prends le temps de vous expliquer simplement comment tout fonctionne, sans jargon.</p>
             </div>
         </div>
 
-        <!-- Section Grille Tarifaire -->
-        <h2 class="section-title">Nos Tarifs & Prestations</h2>
-        <p class="section-subtitle">Facturation claire. Prix nets, exonérés de TVA (Osek Patur).</p>
+        <h2 class="section-title" data-i18n="pricing_title">Nos Tarifs & Prestations</h2>
+        <p class="section-subtitle" data-i18n="pricing_subtitle">Facturation claire. Prix nets, exonérés de TVA (Osek Patur).</p>
         
         <div class="pricing-grid">
             <!-- Carte 1 -->
             <div class="pricing-card">
                 <div class="pricing-header">
-                    <h3>Dépannage à Distance</h3>
-                    <div class="price">150 ₪ <span>/ jusqu'à 30 min</span></div>
+                    <h3 data-i18n="card1_title">Dépannage à Distance</h3>
+                    <div class="price">150 ₪ <span data-i18n="card1_time">/ jusqu'à 30 min</span></div>
                 </div>
                 <div class="pricing-body">
                     <ul class="pricing-list">
-                        <li>Assistance immédiate via écran partagé</li>
-                        <li>Nettoyage de virus et lenteurs (PC/Mac)</li>
-                        <li>Configuration de boîte mail</li>
-                        <li>Problème d'impression ou de mot de passe</li>
+                        <li data-i18n="card1_li1">Assistance immédiate via écran partagé</li>
+                        <li data-i18n="card1_li2">Nettoyage de virus et lenteurs (PC/Mac)</li>
+                        <li data-i18n="card1_li3">Configuration de boîte mail</li>
+                        <li data-i18n="card1_li4">Problème d'impression ou de mot de passe</li>
                     </ul>
                 </div>
                 <div class="pricing-footer">
-                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;">Réserver</a>
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;" data-i18n="btn_book">Réserver</a>
                 </div>
             </div>
 
-            <!-- Carte 2 (Mise en avant) -->
+            <!-- Carte 2 -->
             <div class="pricing-card premium">
                 <div class="pricing-header">
-                    <div class="badge" style="color: var(--primary); background: #DBEAFE; margin-bottom: 10px;">Le plus demandé</div>
-                    <h3>Intervention à Domicile</h3>
-                    <div class="price">300 ₪ <span>/ la 1ère heure</span></div>
+                    <div class="badge" style="color: var(--primary); background: #DBEAFE; margin-bottom: 10px;" data-i18n="card2_badge">Le plus demandé</div>
+                    <h3 data-i18n="card2_title">Intervention à Domicile</h3>
+                    <div class="price">300 ₪ <span data-i18n="card2_time">/ la 1ère heure</span></div>
                 </div>
                 <div class="pricing-body">
                     <ul class="pricing-list">
-                        <li>Déplacement inclus (Ra'anana / Netanya)</li>
-                        <li>Optimisation réseau WiFi & Box Internet</li>
-                        <li>Diagnostic et réparation matériel</li>
-                        <li>Installation imprimante et périphériques</li>
-                        <li>Heure supplémentaire : 180 ₪</li>
+                        <li data-i18n="card2_li1">Déplacement inclus (Ra'anana / Netanya)</li>
+                        <li data-i18n="card2_li2">Optimisation réseau WiFi & Box Internet</li>
+                        <li data-i18n="card2_li3">Diagnostic et réparation matériel</li>
+                        <li data-i18n="card2_li4">Installation imprimante et périphériques</li>
                     </ul>
                 </div>
                 <div class="pricing-footer">
-                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp">Prendre RDV</a>
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" data-i18n="btn_rdv">Prendre RDV</a>
                 </div>
             </div>
 
             <!-- Carte 3 -->
             <div class="pricing-card">
                 <div class="pricing-header">
-                    <h3>Pack Smart TV & Maison</h3>
-                    <div class="price">Dès 350 ₪ <span>/ forfait</span></div>
+                    <h3 data-i18n="card3_title">Pack Smart TV & Maison</h3>
+                    <div class="price" data-i18n="card3_price">Dès 350 ₪ <span>/ forfait</span></div>
                 </div>
                 <div class="pricing-body">
                     <ul class="pricing-list">
-                        <li>Configuration Android TV / Apple TV</li>
-                        <li>Installation domotique (lumières, caméras)</li>
-                        <li>Centralisation sur application mobile</li>
-                        <li>Formation complète pour toute la famille</li>
+                        <li data-i18n="card3_li1">Configuration Android TV / Apple TV</li>
+                        <li data-i18n="card3_li2">Installation domotique (lumières, caméras)</li>
+                        <li data-i18n="card3_li3">Centralisation sur application mobile</li>
+                        <li data-i18n="card3_li4">Formation complète pour toute la famille</li>
                     </ul>
                 </div>
                 <div class="pricing-footer">
-                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;">Demander un devis</a>
+                    <a href="https://wa.me/972000000000" class="btn btn-whatsapp" style="background-color: var(--secondary); box-shadow: none;" data-i18n="btn_quote">Demander un devis</a>
                 </div>
             </div>
         </div>
 
-        <!-- Bannière de réassurance -->
         <div class="banner">
-            <h2>Vous avez une demande spécifique ?</h2>
-            <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 20px auto;">Nous proposons également des abonnements annuels pour les seniors et des services sur-mesure pour les transferts de données de vos anciens ordinateurs.</p>
-            <a href="https://wa.me/972000000000" class="btn" style="background: var(--white); color: var(--primary);">Contactez-nous pour en parler</a>
+            <h2 data-i18n="banner_title">Vous avez une demande spécifique ?</h2>
+            <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto 20px auto;" data-i18n="banner_desc">Nous proposons également des abonnements annuels pour les seniors et des services sur-mesure pour les transferts de données de vos anciens ordinateurs.</p>
+            <a href="https://wa.me/972000000000" class="btn" style="background: var(--white); color: var(--primary);" data-i18n="btn_contact">Contactez-nous pour en parler</a>
         </div>
 
     </div>
 
     <footer>
-        <p><strong>Ma-Tech-Maison</strong> — L'informatique simple, chez vous.</p>
-        <p>Secteurs d'intervention : Ra'anana, Netanya et région du Sharon.</p>
-        <p style="margin-top: 20px; font-size: 0.8rem;">Osek Patur n° [Votre TZ] • Exempt de TVA (פטור ממע"מ לפי סעיף 31(3) לחוק מע"מ)</p>
+        <p><strong data-i18n="footer_brand">Ma-Tech-Maison — L'informatique simple, chez vous.</strong></p>
+        <p data-i18n="footer_areas">Secteurs d'intervention : Ra'anana, Netanya et région du Sharon.</p>
+        <p style="margin-top: 20px; font-size: 0.8rem;" data-i18n="footer_legal">Osek Patur • Exempt de TVA (פטור ממע"מ לפי סעיף 31(3) לחוק מע"מ)</p>
     </footer>
+
+    <script>
+        // Dictionnaire des traductions
+        const translations = {
+            fr: {
+                badge: "📍 Ra'anana & Netanya | 🇫🇷 100% en Français",
+                hero_desc: "Assistance informatique à domicile, installation de TV connectée et configuration de maison intelligente. Transparence, pédagogie et tarifs sans surprise.",
+                btn_whatsapp: "📱 Discutons sur WhatsApp",
+                process_title: "Comment se déroule l'intervention ?",
+                step1_title: "1. Contact & Diagnostic",
+                step1_desc: "Envoyez un message sur WhatsApp avec votre problème. Nous établissons un diagnostic rapide et un devis gratuit.",
+                step2_title: "2. Rendez-vous",
+                step2_desc: "Nous convenons d'un horaire qui vous arrange pour une intervention à votre domicile ou une prise en main à distance.",
+                step3_title: "3. Résolution & Pédagogie",
+                step3_desc: "Le problème est réglé ! Je prends le temps de vous expliquer simplement comment tout fonctionne, sans jargon.",
+                pricing_title: "Nos Tarifs & Prestations",
+                pricing_subtitle: "Facturation claire. Prix nets, exonérés de TVA (Osek Patur).",
+                card1_title: "Dépannage à Distance",
+                card1_time: "/ jusqu'à 30 min",
+                card1_li1: "Assistance immédiate via écran partagé",
+                card1_li2: "Nettoyage de virus et lenteurs (PC/Mac)",
+                card1_li3: "Configuration de boîte mail",
+                card1_li4: "Problème d'impression ou de mot de passe",
+                btn_book: "Réserver",
+                card2_badge: "Le plus demandé",
+                card2_title: "Intervention à Domicile",
+                card2_time: "/ la 1ère heure",
+                card2_li1: "Déplacement inclus (Ra'anana / Netanya)",
+                card2_li2: "Optimisation réseau WiFi & Box Internet",
+                card2_li3: "Diagnostic et réparation matériel",
+                card2_li4: "Installation imprimante et périphériques",
+                btn_rdv: "Prendre RDV",
+                card3_title: "Pack Smart TV & Maison",
+                card3_price: "Dès 350 ₪ <span>/ forfait</span>",
+                card3_li1: "Configuration Android TV / Apple TV",
+                card3_li2: "Installation domotique (lumières, caméras)",
+                card3_li3: "Centralisation sur application mobile",
+                card3_li4: "Formation complète pour toute la famille",
+                btn_quote: "Demander un devis",
+                banner_title: "Vous avez une demande spécifique ?",
+                banner_desc: "Nous proposons également des abonnements annuels pour les seniors et des services sur-mesure pour les transferts de données de vos anciens ordinateurs.",
+                btn_contact: "Contactez-nous pour en parler",
+                footer_brand: "Ma-Tech-Maison — L'informatique simple, chez vous.",
+                footer_areas: "Secteurs d'intervention : Ra'anana, Netanya et région du Sharon.",
+                footer_legal: "Osek Patur • Exempt de TVA (פטור ממע"מ לפי סעיף 31(3) לחוק מע"מ)"
+            },
+            en: {
+                badge: "📍 Ra'anana & Netanya | 🇬🇧 English Spoken",
+                hero_desc: "Home IT support, smart TV installation, and smart home setup. Transparent pricing, clear explanations, and no surprises.",
+                btn_whatsapp: "📱 Chat on WhatsApp",
+                process_title: "How does it work?",
+                step1_title: "1. Contact & Diagnosis",
+                step1_desc: "Send a message on WhatsApp with your issue. We'll provide a quick diagnosis and a free quote.",
+                step2_title: "2. Appointment",
+                step2_desc: "We schedule a convenient time for an on-site visit or a remote support session.",
+                step3_title: "3. Resolution & Guidance",
+                step3_desc: "Problem solved! I take the time to simply explain how everything works, jargon-free.",
+                pricing_title: "Our Prices & Services",
+                pricing_subtitle: "Clear billing. Net prices, VAT exempt (Osek Patur).",
+                card1_title: "Remote Support",
+                card1_time: "/ up to 30 min",
+                card1_li1: "Immediate assistance via screen sharing",
+                card1_li2: "Virus and slowdown removal (PC/Mac)",
+                card1_li3: "Email setup and configuration",
+                card1_li4: "Printing or password issues",
+                btn_book: "Book Now",
+                card2_badge: "Most Popular",
+                card2_title: "On-Site Visit",
+                card2_time: "/ 1st hour",
+                card2_li1: "Travel included (Ra'anana / Netanya)",
+                card2_li2: "WiFi network & Router optimization",
+                card2_li3: "Hardware diagnosis and repair",
+                card2_li4: "Printer and peripheral installation",
+                btn_rdv: "Book Appointment",
+                card3_title: "Smart TV & Home Pack",
+                card3_price: "From 350 ₪ <span>/ package</span>",
+                card3_li1: "Android TV / Apple TV setup",
+                card3_li2: "Smart home installation (lights, cameras)",
+                card3_li3: "Centralized on a single mobile app",
+                card3_li4: "Full training for the whole family",
+                btn_quote: "Get a quote",
+                banner_title: "Have a specific request?",
+                banner_desc: "We also offer annual subscriptions for seniors and custom services for data transfers from your old computers.",
+                btn_contact: "Contact us to discuss",
+                footer_brand: "Ma-Tech-Maison — Simple home IT.",
+                footer_areas: "Service areas: Ra'anana, Netanya, and the Sharon region.",
+                footer_legal: "Osek Patur • VAT Exempt (פטור ממע\"מ לפי סעיף 31(3) לחוק מע\"מ)"
+            },
+            he: {
+                badge: "📍 רעננה ונתניה | 🇮🇱 שירות בעברית",
+                hero_desc: "תמיכת מחשבים עד הבית, התקנת טלוויזיה חכמה והגדרת בית חכם. שקיפות מלאה, הדרכה בגובה העיניים ומחירים ללא הפתעות.",
+                btn_whatsapp: "📱 שלחו הודעה בוואטסאפ",
+                process_title: "איך זה עובד?",
+                step1_title: "1. יצירת קשר ואבחון",
+                step1_desc: "שלחו הודעה בוואטסאפ עם הבעיה. תקבלו אבחון מהיר והצעת מחיר ללא עלות.",
+                step2_title: "2. קביעת פגישה",
+                step2_desc: "נתאם מועד שנוח לכם לביקור בית או להתחברות ותמיכה מרחוק.",
+                step3_title: "3. פתרון והדרכה",
+                step3_desc: "הבעיה נפתרה! אני לוקח את הזמן להסביר לכם בפשטות איך הכל עובד, ללא מונחים טכניים מסובכים.",
+                pricing_title: "מחירים ושירותים",
+                pricing_subtitle: "חיוב ברור. מחירים נטו, פטור ממע\"מ (עוסק פטור).",
+                card1_title: "תמיכה מרחוק",
+                card1_time: "/ עד 30 דקות",
+                card1_li1: "סיוע מיידי באמצעות שיתוף מסך",
+                card1_li2: "ניקוי וירוסים ואיטיות (PC/Mac)",
+                card1_li3: "הגדרת תיבות דואר אלקטרוני",
+                card1_li4: "בעיות הדפסה או שחזור סיסמאות",
+                btn_book: "להזמנה",
+                card2_badge: "הכי מבוקש",
+                card2_title: "ביקור בית",
+                card2_time: "/ שעה ראשונה",
+                card2_li1: "כולל הגעה (רעננה / נתניה)",
+                card2_li2: "אופטימיזציה של רשת ה-WiFi והראוטר",
+                card2_li3: "אבחון ותיקון תקלות חומרה",
+                card2_li4: "התקנת מדפסת וציוד היקפי",
+                btn_rdv: "קביעת פגישה",
+                card3_title: "חבילת טלוויזיה ובית חכם",
+                card3_price: "החל מ-350 ₪ <span>/ חבילה</span>",
+                card3_li1: "הגדרת Android TV / Apple TV",
+                card3_li2: "התקנת בית חכם (תאורה, מצלמות)",
+                card3_li3: "ריכוז באפליקציה אחת בסלולר",
+                card3_li4: "הדרכה מלאה לכל המשפחה",
+                btn_quote: "בקשת הצעת מחיר",
+                banner_title: "יש לכם בקשה מיוחדת?",
+                banner_desc: "אנו מציעים גם מנויים שנתיים לגיל השלישי ושירותים מותאמים אישית להעברת נתונים מהמחשבים הישנים שלכם.",
+                btn_contact: "צרו קשר לפרטים",
+                footer_brand: "Ma-Tech-Maison — המחשבים בבית, פשוט.",
+                footer_areas: "אזורי שירות: רעננה, נתניה ואזור השרון.",
+                footer_legal: "עוסק פטור • פטור ממע\"מ לפי סעיף 31(3) לחוק מע\"מ"
+            }
+        };
+
+        function setLang(lang) {
+            // Mettre à jour l'état actif des boutons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Gérer la direction du texte (RTL pour l'hébreu)
+            if (lang === 'he') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'he');
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', lang);
+            }
+
+            // Traduire tous les éléments avec l'attribut data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
