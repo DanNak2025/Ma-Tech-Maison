@@ -1,1059 +1,323 @@
 <!DOCTYPE html>
-<html lang="fr" class="dark scroll-smooth">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ma Tech Maison - Assistance Tech à Domicile & à Distance</title>
+    <title>Ma Tech Maison - Assistance Tech à Domicile & Remote en Israël</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Font Family (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            blue: '#00d2ff',
-                            indigo: '#3a7bd5',
-                            dark: '#080c14',
-                            card: '#121929',
-                            emerald: '#10b981',
-                            amber: '#f59e0b',
-                            accent: '#6366f1'
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            400: '#22d3ee',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            900: '#164e63',
+                            dark: '#0b0f19',
+                            card: '#111827',
                         }
                     },
-                    boxShadow: {
-                        glow: '0 0 25px rgba(0, 210, 255, 0.25)',
-                        'glow-lg': '0 0 40px rgba(0, 210, 255, 0.4)',
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #080c14;
+            background-color: #0b0f19;
             color: #f3f4f6;
         }
-        .glass {
-            background: rgba(18, 25, 41, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glass-card {
-            background: rgba(22, 32, 54, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+        .glass-nav {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
-        .glass-card:hover {
-            border-color: rgba(0, 210, 255, 0.4);
-            transform: translateY(-2px);
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #080c14;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00d2ff;
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #22d3ee 50%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
-<body class="bg-brand-dark text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-blue selection:text-black">
+<body class="font-sans antialiased text-gray-200 bg-[#0b0f19] selection:bg-cyan-500 selection:text-white">
 
-<!-- Top Emergency & Info Bar -->
-<div class="bg-gradient-to-r from-brand-indigo via-blue-700 to-cyan-600 text-white text-[12px] font-medium py-2 px-4">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-        <div class="flex items-center gap-4">
-            <span class="inline-flex items-center gap-1.5 font-semibold">
-                <span class="relative flex h-2 w-2">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-300"></span>
-                </span>
-                Interventions Disponibles Aujourd'hui
-            </span>
-            <span class="hidden md:inline text-white/80">|</span>
-            <span class="hidden md:inline text-white/90"><i class="fa-solid fa-house-laptop mr-1"></i> À domicile ou Prise en main à distance (Remote)</span>
-        </div>
-        <div class="flex items-center gap-4 text-xs font-semibold">
-            <a href="https://wa.me/33100000000" target="_blank" class="hover:underline flex items-center gap-1 text-emerald-300">
-                <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp direct
-            </a>
-            <span class="text-white/80">|</span>
-            <a href="tel:+33100000000" class="hover:underline flex items-center gap-1">
-                <i class="fa-solid fa-phone text-xs"></i> Support Tél
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Header / Navigation -->
-<header class="sticky top-0 z-40 glass border-b border-white/10 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <!-- Logo -->
-            <a href="#" class="flex items-center space-x-3 group">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-indigo to-brand-blue flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition-transform duration-300">
-                    <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo MTM -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <span class="text-xl font-extrabold text-white tracking-wider">MTM</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-brand-blue">
-                        MA TECH MAISON
-                    </span>
-                    <span class="text-[10px] text-brand-blue tracking-widest uppercase -mt-1 font-bold">Assistance Tech & Domotique</span>
+                    <span class="font-bold text-lg text-white leading-tight">MA TECH MAISON</span>
+                    <span class="text-xs text-cyan-400 font-medium">Assistance & Multimédia en Israël</span>
                 </div>
             </a>
 
-            <!-- Navigation Bar -->
-            <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium">
-                <a href="#services" class="hover:text-brand-blue transition-colors">Services</a>
-                <a href="#estimator" class="hover:text-brand-blue transition-colors flex items-center gap-1.5">
-                    <span class="px-2 py-0.5 rounded-full bg-brand-blue/10 text-brand-blue text-[10px] font-bold">Interactif</span>
-                    Estimateur & Devis
-                </a>
-                <a href="#alyah" class="hover:text-brand-blue transition-colors text-amber-400 font-semibold flex items-center gap-1">
-                    <i class="fa-solid fa-plane-arrival text-xs"></i> Pack Alyah
-                </a>
-                <a href="#android-box" class="hover:text-brand-blue transition-colors">Box Android TV</a>
-                <a href="#smart-home" class="hover:text-brand-blue transition-colors">Maison Connectée</a>
-                <a href="#faq" class="hover:text-brand-blue transition-colors">FAQ</a>
-            </nav>
+            <!-- Liens de navigation (Desktop) -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#services" class="hover:text-cyan-400 transition-colors">Services</a>
+                <a href="#tarifs" class="hover:text-cyan-400 transition-colors">Formules</a>
+                <a href="#pourquoi" class="hover:text-cyan-400 transition-colors">Pourquoi MTM</a>
+            </div>
 
-            <!-- Action CTA -->
-            <div class="flex items-center gap-3">
-                <button onclick="openBookingModal()" class="hidden sm:flex items-center gap-2 text-xs font-bold px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white shadow-glow hover:shadow-glow-lg transition">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    Prendre Rendez-vous
-                </button>
-                <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-slate-800 text-slate-300">
-                    <i class="fa-solid fa-bars text-lg"></i>
-                </button>
+            <!-- Contact Rapide -->
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/972546904887" target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-emerald-600/20 transition-all hover:scale-105">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>WhatsApp : 054-6904887</span>
+                </a>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <!-- Mobile Nav Menu -->
-    <div id="mobileMenu" class="hidden lg:hidden glass border-t border-slate-800 px-4 py-5 space-y-3 text-sm">
-        <a href="#services" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Services & Dépannage</a>
-        <a href="#estimator" onclick="toggleMobileMenu()" class="block py-2 text-brand-blue font-bold">Calculer mon Tarif</a>
-        <a href="#alyah" onclick="toggleMobileMenu()" class="block py-2 text-amber-400 font-bold">Accompagnement Alyah & Nouveaux Arrivants</a>
-        <a href="#android-box" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Box Android + Installation</a>
-        <a href="#smart-home" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Domotique & Smart Home</a>
-        <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">F.A.Q</a>
-        <button onclick="toggleMobileMenu(); openBookingModal();" class="w-full mt-3 py-3 rounded-xl bg-brand-blue text-slate-950 font-bold text-center">
-            Demander une Intervention
-        </button>
-    </div>
-</header>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <!-- Effet d'arrière-plan éclairé -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-<!-- Hero Section -->
-<section class="relative pt-12 pb-20 overflow-hidden">
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-blue/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Hero Content -->
-            <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-blue/10 border border-brand-blue/30 text-brand-blue text-xs font-semibold">
-                    <i class="fa-solid fa-headset text-sm"></i>
-                    <span>Dépannage Informatique & Multi-Équipements</span>
-                </div>
-
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                    Votre expert tech <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-indigo-400 to-purple-400">à domicile</span> ou <span class="text-emerald-400">à distance</span>.
-                </h1>
-
-                <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                    Résolution de problèmes PC/Mac, Smart TV, Réseau WiFi, IPTV, installation de Box Android, domotique et formations sur-mesure. Un accompagnement simple, rapide et patient.
-                </p>
-
-                <!-- Intervention Type Selector Pills -->
-                <div class="p-2 rounded-2xl glass border border-slate-700/80 max-w-lg mx-auto lg:mx-0 grid grid-cols-2 gap-2 text-center text-xs font-bold">
-                    <div class="p-3 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white shadow-glow flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-house text-sm"></i>
-                        <span>Intervention À Domicile</span>
-                    </div>
-                    <div class="p-3 rounded-xl bg-slate-800/80 text-emerald-400 border border-emerald-500/30 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-laptop-code text-sm"></i>
-                        <span>Support à Distance (Remote)</span>
-                    </div>
-                </div>
-
-                <!-- Call to action buttons -->
-                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                    <button onclick="openBookingModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white font-bold text-sm shadow-glow hover:shadow-glow-lg transition text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
-                        Demander une Intervention
-                    </button>
-                    <a href="#estimator" class="w-full sm:w-auto px-8 py-4 rounded-xl glass hover:bg-slate-800/80 text-white font-bold text-sm border border-slate-700 hover:border-brand-blue transition text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-calculator text-brand-blue"></i>
-                        Simuler mon Tarif
-                    </a>
-                </div>
-
-                <!-- Trust Metrics -->
-                <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
-                    <div>
-                        <div class="text-2xl font-extrabold text-white">99%</div>
-                        <p class="text-xs text-slate-400">Problèmes Résolus</p>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-extrabold text-emerald-400"><i class="fa-solid fa-bolt mr-1 text-sm"></i> 24h</div>
-                        <p class="text-xs text-slate-400">Délai d'intervention</p>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-extrabold text-amber-400">FR / EN / HE</div>
-                        <p class="text-xs text-slate-400">Service Multilingue</p>
-                    </div>
-                </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-cyan-500/30 text-cyan-300 text-xs font-semibold mb-8">
+                <span class="flex h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Service Exclusif pour les Francophones en Israël 🇫🇷 🇮🇱
             </div>
 
-            <!-- Hero Interactive Widget -->
-            <div class="lg:col-span-5">
-                <div class="glass rounded-3xl p-6 border border-slate-700/60 shadow-2xl space-y-6">
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                        <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-xs font-bold text-slate-200">Assistance Express en Direct</span>
-                        </div>
-                        <span class="text-[11px] text-slate-400">Rép. sous 15 min</span>
-                    </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+                Votre Assistance Tech <br>
+                <span class="text-gradient">À Domicile & À Distance</span>
+            </h1>
 
-                    <!-- Quick Problem Finder -->
-                    <div class="space-y-3">
-                        <p class="text-xs font-bold text-slate-300 uppercase tracking-wider">De quoi avez-vous besoin ?</p>
+            <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Fini les tracas informatiques, la télé qui bug ou le WiFi faible. Profitez d'un service simple, patient et 100% en français pour tous vos équipements.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/972546904887" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-4 rounded-xl shadow-xl shadow-cyan-500/20 transition-all hover:scale-105">
+                    <i data-lucide="phone-call" class="w-5 h-5"></i>
+                    <span>Réserver une intervention</span>
+                </a>
+                <a href="#services" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 glass-card hover:bg-white/10 text-gray-200 font-semibold px-8 py-4 rounded-xl transition-all border border-gray-700">
+                    <span>Découvrir nos services</span>
+                    <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <!-- Badges de réassurance -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <i data-lucide="home" class="w-6 h-6 text-cyan-400 flex-shrink-0"></i>
+                    <span class="text-xs sm:text-sm font-medium text-gray-300">Intervention à Domicile</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <i data-lucide="wifi" class="w-6 h-6 text-cyan-400 flex-shrink-0"></i>
+                    <span class="text-xs sm:text-sm font-medium text-gray-300">Assistance à Distance</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <i data-lucide="languages" class="w-6 h-6 text-cyan-400 flex-shrink-0"></i>
+                    <span class="text-xs sm:text-sm font-medium text-gray-300">Service 100% en Français</span>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-cyan-400 flex-shrink-0"></i>
+                    <span class="text-xs sm:text-sm font-medium text-gray-300">Pédagogie & Patience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Nos Prestations sur Mesure</h2>
+                <p class="text-gray-400">Des solutions concrètes et efficaces pour répondre à tous vos besoins technologiques du quotidien.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="tv" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Smart TV & Streaming IPTV</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Configuration de vos applications, réglages des chaînes TV françaises et internationales sur votre téléviseur.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="box" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Vente & Installation Box Android</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Fourniture et installation complète à domicile de boîtiers Android haute performance prêts à l'emploi.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="wifi" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Optimisation WiFi & Réseau</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Résolution des problèmes de portée WiFi, élimination des zones mortes (Mamad) et installation de répéteurs Mesh.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="laptop" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Dépannage Informatique</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Résolution de problèmes sur Laptops, PC, Mac, Smartphones (iOS / Android) et Tablettes. Nettoyage et transferts.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="plane-landing" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Accompagnement Alyah</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Aide et conseils pour les nouveaux arrivants afin de configurer toute la partie multimédia et internet de leur nouveau logement.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="glass-card p-8 rounded-2xl hover:border-cyan-500/50 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Formations & Prise en main</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        Cours personnalisés à votre rythme pour apprendre à utiliser facilement votre ordinateur, votre téléphone ou vos applications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs / Formules Section -->
+    <section id="tarifs" class="py-20 bg-gray-900/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Modes d'Intervention</h2>
+                <p class="text-gray-400">Choisissez l'option qui vous convient le mieux.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Intervention à domicile -->
+                <div class="glass-card p-8 rounded-2xl border-cyan-500/30 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-bold mb-4">
+                            SÉRÉNITÉ TOTALE
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Intervention à Domicile</h3>
+                        <p class="text-gray-400 text-sm mb-6">Un technicien se déplace directement chez vous pour installer, configurer et tester tout le matériel.</p>
                         
-                        <button onclick="quickSelectService('Smart TV & IPTV')" class="w-full p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-blue flex items-center justify-between text-left transition group">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-tv"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-white group-hover:text-brand-blue transition">Config Smart TV / IPTV / Box</p>
-                                    <p class="text-[10px] text-slate-400">Installation applications & chaînes</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-blue"></i>
-                        </button>
-
-                        <button onclick="quickSelectService('WiFi & Réseau')" class="w-full p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-blue flex items-center justify-between text-left transition group">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-brand-blue/10 text-brand-blue flex items-center justify-center">
-                                    <i class="fa-solid fa-wifi"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-white group-hover:text-brand-blue transition">WiFi Lourd / Fibre & Amplificateur</p>
-                                    <p class="text-[10px] text-slate-400">Suppression des zones mortes</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-blue"></i>
-                        </button>
-
-                        <button onclick="quickSelectService('Alyah Tech')" class="w-full p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-amber-400 flex items-center justify-between text-left transition group">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-plane-arrival"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-white group-hover:text-amber-400 transition">Pack Nouveaux Arrivants (Alyah)</p>
-                                    <p class="text-[10px] text-slate-400">Installation internet, box & démarches</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-amber-400"></i>
-                        </button>
-
-                        <button onclick="quickSelectService('Dépannage PC / Mac')" class="w-full p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-blue flex items-center justify-between text-left transition group">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center">
-                                    <i class="fa-solid fa-laptop text-sm"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-white group-hover:text-brand-blue transition">Ordinateur, Tablette & Smartphone</p>
-                                    <p class="text-[10px] text-slate-400">Lenteur, virus, réinitialisation, sauvegardes</p>
-                                </div>
-                            </div>
-                            <i class="fa-solid fa-chevron-right text-xs text-slate-500 group-hover:text-brand-blue"></i>
-                        </button>
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-cyan-400"></i>
+                                <span>Déplacement à votre adresse</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-cyan-400"></i>
+                                <span>Installation et tests sur place</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-cyan-400"></i>
+                                <span>Explications et conseils en direct</span>
+                            </li>
+                        </ul>
                     </div>
+                    <a href="https://wa.me/972546904887" target="_blank" class="w-full text-center bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold py-3.5 rounded-xl transition-colors">
+                        Prendre rendez-vous
+                    </a>
+                </div>
 
-                    <div class="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs flex items-center gap-3">
-                        <i class="fa-solid fa-shield-halved text-xl"></i>
-                        <div>
-                            <p class="font-bold">Garantie Intervention Satisfaite</p>
-                            <p class="text-[10px] text-emerald-300">Si nous ne résolvons pas votre problème, vous ne payez rien.</p>
+                <!-- Assistance Remote -->
+                <div class="glass-card p-8 rounded-2xl border-gray-700 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-block px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-4">
+                            RAPIDE & SANS DÉPLACEMENT
                         </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Aide à Distance (Remote)</h3>
+                        <p class="text-gray-400 text-sm mb-6">Prise en main à distance ou guidage téléphonique pour vos urgences et configurations simples.</p>
+                        
+                        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-purple-400"></i>
+                                <span>Intervention rapide</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-purple-400"></i>
+                                <span>Assistance par téléphone ou visio</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-5 h-5 text-purple-400"></i>
+                                <span>Prise en main sécurisée de votre PC/Mac</span>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Complete Services Grid Section -->
-<section id="services" class="py-20 bg-slate-950/80 border-y border-slate-800/80 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Nos Domaines d'Expertise</h2>
-            <p class="text-3xl sm:text-4xl font-extrabold text-white">Un Service Complètement Adapté à Vos Besoins</p>
-            <p class="text-slate-400 text-sm mt-3">Que ce soit pour un dépannage ponctuel, une installation à domicile ou un cours particulier, nos experts interviennent rapidement.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            <!-- Service 1 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-brand-blue/10 text-brand-blue flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-headset"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Aide & Support Tech</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Assistance à domicile ou prise en main sécurisée à distance pour résoudre tous vos soucis informatiques du quotidien.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-brand-blue mr-1.5"></i> Dépannage à distance instantané</li>
-                    <li><i class="fa-solid fa-check text-brand-blue mr-1.5"></i> Intervention à domicile</li>
-                </ul>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-tv"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Smart TV & IPTV</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Configuration de votre téléviseur connecté, réglage des chaînes françaises/internationales, applications de streaming et IPTV.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-amber-400 mr-1.5"></i> Paramétrage Samsung, LG, Android TV</li>
-                    <li><i class="fa-solid fa-check text-amber-400 mr-1.5"></i> Classement des chaînes favoris</li>
-                </ul>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-wifi"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">WiFi & Réseau</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Optimisation de votre connexion internet, élimination des zones mortes, installation de répéteurs WiFi Mesh haute vitesse.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Analyse spectrale du signal</li>
-                    <li><i class="fa-solid fa-check text-emerald-400 mr-1.5"></i> Réseau invité & sécurité renforcée</li>
-                </ul>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-box-archive"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Box Android TV</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Vente et installation clé en main de Box Android 4K préconfigurées avec toutes vos applications déjà installées.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-purple-400 mr-1.5"></i> Vente de boîtiers certifiés (Xiaomi, Formuler)</li>
-                    <li><i class="fa-solid fa-check text-purple-400 mr-1.5"></i> Prêt à l'emploi branché chez vous</li>
-                </ul>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-laptop"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">PC, Mac & Tablettes</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Résolution de pannes, suppression de virus, réinstallation du système, transfert de données et nettoyage complet.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-indigo-400 mr-1.5"></i> iPhone, iPad, Android & Ordinateurs</li>
-                    <li><i class="fa-solid fa-check text-indigo-400 mr-1.5"></i> Sauvegarde Cloud & disques externes</li>
-                </ul>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-house-signal"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Maison Connectée</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Installation de caméras de sécurité, serrures biométriques, éclairage intelligent, volets et assistants vocaux.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-cyan-400 mr-1.5"></i> Scénarios d'automatisation</li>
-                    <li><i class="fa-solid fa-check text-cyan-400 mr-1.5"></i> Alerte sécurité sur smartphone</li>
-                </ul>
-            </div>
-
-            <!-- Service 7 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-graduation-cap"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Formations Tech</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Cours individuels très patients pour seniors et débutants : maîtrisez WhatsApp, emails, démarches en ligne et banque.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-rose-400 mr-1.5"></i> Pédagogie adaptée et fiches résumées</li>
-                    <li><i class="fa-solid fa-check text-rose-400 mr-1.5"></i> À votre rythme, sans stress</li>
-                </ul>
-            </div>
-
-            <!-- Service 8 (Alyah) -->
-            <div class="glass-card p-6 rounded-3xl border border-amber-500/40 flex flex-col justify-between relative overflow-hidden">
-                <div class="absolute -top-3 right-4 bg-amber-500 text-slate-950 font-extrabold text-[9px] px-2.5 py-0.5 rounded-full uppercase">
-                    Spécial Alyah
-                </div>
-                <div>
-                    <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-plane-arrival"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2">Consultant Alyah</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Accompagnement complet pour les nouveaux arrivants : abonnement fibre, forfait mobile, TV française et démarches.
-                    </p>
-                </div>
-                <ul class="text-[11px] text-slate-300 space-y-1.5 pt-3 border-t border-slate-800">
-                    <li><i class="fa-solid fa-check text-amber-400 mr-1.5"></i> Négociation avec les FAI locaux</li>
-                    <li><i class="fa-solid fa-check text-amber-400 mr-1.5"></i> Service Trilingue (FR / EN / HE)</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Interactive Service Estimator & Dynamic Booking Calculator -->
-<section id="estimator" class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-14">
-            <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Simulateur en Direct</h2>
-            <p class="text-3xl sm:text-4xl font-extrabold text-white">Calculez le Tarif de votre Intervention</p>
-            <p class="text-slate-400 text-sm mt-3">Sélectionnez votre type de problème et le mode d'intervention pour obtenir une estimation immédiate.</p>
-        </div>
-
-        <div class="grid lg:grid-cols-12 gap-8 items-start">
-            
-            <!-- Estimator Form Options -->
-            <div class="lg:col-span-7 glass p-6 sm:p-8 rounded-3xl border border-slate-800 space-y-6">
-                <!-- Step 1: Select Category -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">1. Choisissez le domaine d'intervention</label>
-                    <div class="grid sm:grid-cols-2 gap-3" id="estimatorCategories">
-                        <!-- Loaded dynamically via JS -->
-                    </div>
-                </div>
-
-                <!-- Step 2: Select Mode -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">2. Mode d'intervention souhaité</label>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="setEstimatorMode('remote')" id="mode-remote" class="mode-btn p-4 rounded-2xl glass-card border border-brand-blue/40 bg-brand-blue/10 flex items-center gap-3 text-left transition">
-                            <i class="fa-solid fa-laptop-code text-xl text-emerald-400"></i>
-                            <div>
-                                <p class="text-xs font-bold text-white">À Distance (Remote)</p>
-                                <p class="text-[10px] text-slate-400">Prise en main via internet</p>
-                            </div>
-                        </button>
-
-                        <button onclick="setEstimatorMode('domicile')" id="mode-domicile" class="mode-btn p-4 rounded-2xl glass-card border border-slate-800 flex items-center gap-3 text-left transition">
-                            <i class="fa-solid fa-house-user text-xl text-brand-blue"></i>
-                            <div>
-                                <p class="text-xs font-bold text-white">À Domicile</p>
-                                <p class="text-[10px] text-slate-400">Déplacement du technicien</p>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Options / Hardware Addons -->
-                <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">3. Équipements / Matériel supplémentaire (Optionnel)</label>
-                    <div class="space-y-2">
-                        <label class="p-3 rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-between cursor-pointer hover:border-slate-700">
-                            <div class="flex items-center gap-2">
-                                <input type="checkbox" id="addAndroidBox" onchange="calculateEstimate()" class="rounded bg-slate-800 border-slate-700 text-brand-blue focus:ring-0">
-                                <span class="text-xs font-semibold text-slate-200">Fourniture d'une Box Android TV 4K préconfigurée</span>
-                            </div>
-                            <span class="text-xs font-bold text-brand-blue">+89 €</span>
-                        </label>
-
-                        <label class="p-3 rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-between cursor-pointer hover:border-slate-700">
-                            <div class="flex items-center gap-2">
-                                <input type="checkbox" id="addWifiRepeater" onchange="calculateEstimate()" class="rounded bg-slate-800 border-slate-700 text-brand-blue focus:ring-0">
-                                <span class="text-xs font-semibold text-slate-200">Ajout d'un Répéteur WiFi Mesh Haute Puissance</span>
-                            </div>
-                            <span class="text-xs font-bold text-brand-blue">+59 €</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Estimator Summary Card -->
-            <div class="lg:col-span-5 glass p-6 sm:p-8 rounded-3xl border border-brand-blue/30 shadow-glow flex flex-col justify-between min-h-[420px]">
-                <div>
-                    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Récapitulatif</span>
-                        <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2.5 py-0.5 rounded-full font-bold">Sans engagement</span>
-                    </div>
-
-                    <div class="my-6 space-y-4">
-                        <div>
-                            <span class="text-xs text-slate-400">Prestation :</span>
-                            <p class="text-base font-bold text-white" id="summaryService">Configuration Smart TV & IPTV</p>
-                        </div>
-
-                        <div>
-                            <span class="text-xs text-slate-400">Type d'intervention :</span>
-                            <p class="text-sm font-semibold text-brand-blue" id="summaryMode">À Distance (Prise en main sécurisée)</p>
-                        </div>
-
-                        <div class="pt-3 border-t border-slate-800/80">
-                            <span class="text-xs text-slate-400">Détail du tarif :</span>
-                            <div class="mt-2 space-y-1.5 text-xs text-slate-300" id="summaryBreakdown">
-                                <!-- Breakdown JS -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-6 border-t border-slate-800">
-                    <div class="flex items-baseline justify-between mb-4">
-                        <span class="text-xs text-slate-400 font-semibold">Estimation Totale :</span>
-                        <span class="text-3xl font-extrabold text-white" id="summaryTotalPrice">49 €</span>
-                    </div>
-
-                    <button onclick="bookWithEstimate()" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white font-bold text-sm shadow-glow hover:shadow-glow-lg transition text-center flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        Réserver cette Prestation
-                    </button>
-                    <p class="text-[10px] text-slate-400 text-center mt-2"><i class="fa-solid fa-lock mr-1"></i> Aucun paiement requis à la réservation. Paiement après service.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Special Alyah & New Arrivals Section -->
-<section id="alyah" class="py-20 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-y border-amber-500/20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-12 gap-12 items-center">
-            
-            <div class="lg:col-span-6 space-y-6">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold">
-                    <i class="fa-solid fa-plane-arrival"></i>
-                    <span>Service Dédié Alyah & Nouveaux Arrivants</span>
-                </div>
-
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
-                    Vous venez de faire votre Alyah ? Ne stressez plus avec la <span class="text-amber-400">Tech en Israël</span> !
-                </h2>
-
-                <p class="text-slate-300 text-sm leading-relaxed">
-                    S'installer dans un nouveau pays est un défi. Comprendre les abonnements fibre locaux, paramétrer votre box internet, conserver vos chaînes françaises et configurer vos appareils en hébreu ou en français peut vite devenir un casse-tête.
-                </p>
-
-                <div class="space-y-3">
-                    <div class="p-3.5 rounded-2xl glass-card flex items-start gap-3 border border-slate-800">
-                        <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">1</div>
-                        <div>
-                            <h4 class="text-xs font-bold text-white">Conseil & Choix du Fournisseur Internet / SIM</h4>
-                            <p class="text-[11px] text-slate-400">Nous vous orientons vers les meilleurs opérateurs (Bezeq, Partner, Cellcom, HOT) et négocions pour vous sans barrière de la langue.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-3.5 rounded-2xl glass-card flex items-start gap-3 border border-slate-800">
-                        <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">2</div>
-                        <div>
-                            <h4 class="text-xs font-bold text-white">TV Française & Applications de Streaming</h4>
-                            <p class="text-[11px] text-slate-400">Installation directe des chaînes d'information, films et séries françaises sur vos TV, iPads et Box Android.</p>
-                        </div>
-                    </div>
-
-                    <div class="p-3.5 rounded-2xl glass-card flex items-start gap-3 border border-slate-800">
-                        <div class="w-8 h-8 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-sm flex-shrink-0 mt-0.5">3</div>
-                        <div>
-                            <h4 class="text-xs font-bold text-white">Support Administratif Tech & Traduction</h4>
-                            <p class="text-[11px] text-slate-400">Aide pour configurer les applications essentielles du quotidien (banques, koupat holim, transports) en français.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pt-2 flex items-center gap-4">
-                    <button onclick="quickSelectService('Alyah Tech'); openBookingModal();" class="px-6 py-3.5 rounded-xl bg-amber-500 text-slate-950 font-bold text-xs shadow-lg hover:bg-amber-400 transition">
-                        Réserver mon Pack Consultant Alyah
-                    </button>
-                    <a href="https://wa.me/33100000000" target="_blank" class="text-slate-300 hover:text-white text-xs font-bold flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-emerald-400 text-base"></i> Poser une question sur WhatsApp
+                    <a href="https://wa.me/972546904887" target="_blank" class="w-full text-center glass-card hover:bg-white/10 text-white font-bold py-3.5 rounded-xl transition-colors border border-gray-700">
+                        Demander une aide à distance
                     </a>
                 </div>
             </div>
-
-            <!-- Graphic Card Alyah -->
-            <div class="lg:col-span-6">
-                <div class="glass p-8 rounded-3xl border border-amber-500/30 shadow-2xl relative">
-                    <div class="text-center space-y-4">
-                        <div class="w-20 h-20 mx-auto rounded-3xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-3xl shadow-glow">
-                            <i class="fa-solid fa-synagogue"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Pack "Installation Serine"</h3>
-                        <p class="text-xs text-slate-400">Un seul interlocuteur trilingue pour toute votre maison</p>
-                    </div>
-
-                    <div class="mt-8 space-y-3 bg-slate-900/80 p-5 rounded-2xl border border-slate-800 text-xs">
-                        <div class="flex justify-between items-center py-1.5 border-b border-slate-800">
-                            <span class="text-slate-300"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Audit du logement & WiFi</span>
-                            <span class="text-emerald-400 font-bold">Inclus</span>
-                        </div>
-                        <div class="flex justify-between items-center py-1.5 border-b border-slate-800">
-                            <span class="text-slate-300"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Config 2x Smart TV + Chaînes FR</span>
-                            <span class="text-emerald-400 font-bold">Inclus</span>
-                        </div>
-                        <div class="flex justify-between items-center py-1.5 border-b border-slate-800">
-                            <span class="text-slate-300"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Traduction & paramétrage appareils</span>
-                            <span class="text-emerald-400 font-bold">Inclus</span>
-                        </div>
-                        <div class="flex justify-between items-center py-1.5">
-                            <span class="text-slate-300"><i class="fa-solid fa-check text-emerald-400 mr-2"></i> Assistance WhatsApp 1er Mois</span>
-                            <span class="text-emerald-400 font-bold">Offerte</span>
-                        </div>
-                    </div>
-
-                    <div class="mt-6 text-center">
-                        <span class="text-2xl font-extrabold text-white">149 € <span class="text-xs font-normal text-slate-400">tout inclus</span></span>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Android Box Shop Section -->
-<section id="android-box" class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">Boutique & Clé en Main</h2>
-            <p class="text-3xl sm:text-4xl font-extrabold text-white">Box Android TV Préconfigurées avec Installation</p>
-            <p class="text-slate-400 text-sm mt-3">Transformez n'importe quelle télévision en Smart TV ultra rapide. Livrée et configurée directement chez vous.</p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-8">
-            
-            <!-- Box Option 1 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between relative group border border-slate-800">
-                <div>
-                    <div class="w-full h-40 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-center mb-6 overflow-hidden">
-                        <i class="fa-solid fa-box text-5xl text-slate-500 group-hover:text-brand-blue group-hover:scale-110 transition duration-300"></i>
-                    </div>
-                    <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 uppercase">Essentiel</span>
-                    <h3 class="text-lg font-bold text-white mt-2">Xiaomi TV Box S (2nd Gen)</h3>
-                    <p class="text-xs text-slate-400 mt-1">4K Ultra HD, Google TV, Télécommande Vocale Bluetooth.</p>
-
-                    <ul class="text-xs text-slate-300 space-y-2 my-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Préconfigurée prêt à l'emploi</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Applications de streaming installées</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Wifi Dual Band 5Ghz</li>
-                    </ul>
-                </div>
-
-                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] text-slate-400">Matériel + Config</span>
-                        <div class="text-xl font-extrabold text-white">89 €</div>
-                    </div>
-                    <button onclick="orderBox('Xiaomi TV Box S', 89)" class="px-4 py-2.5 rounded-xl bg-brand-blue text-slate-950 font-bold text-xs hover:bg-cyan-300 transition">
-                        Commander
-                    </button>
-                </div>
-            </div>
-
-            <!-- Box Option 2 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between relative group border border-brand-blue/50 shadow-glow">
-                <div class="absolute -top-3 right-6 bg-gradient-to-r from-brand-indigo to-brand-blue text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase">
-                    Le Plus Vendu
-                </div>
-                <div>
-                    <div class="w-full h-40 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-center mb-6 overflow-hidden">
-                        <i class="fa-solid fa-tv text-5xl text-brand-blue group-hover:scale-110 transition duration-300"></i>
-                    </div>
-                    <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-brand-blue/20 text-brand-blue uppercase">Haut de Gamme</span>
-                    <h3 class="text-lg font-bold text-white mt-2">Formuler Z11 Pro Max 4K</h3>
-                    <p class="text-xs text-slate-400 mt-1">La référence absolue pour le streaming et l'IPTV ultra fluide.</p>
-
-                    <ul class="text-xs text-slate-300 space-y-2 my-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Application MYTVOnline 3 intégrée</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> 4GB RAM + 32GB Stockage</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Port Ethernet Gigabit + WiFi 6</li>
-                    </ul>
-                </div>
-
-                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] text-slate-400">Matériel + Config</span>
-                        <div class="text-xl font-extrabold text-white">169 €</div>
-                    </div>
-                    <button onclick="orderBox('Formuler Z11 Pro Max', 169)" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white font-bold text-xs hover:opacity-90 transition">
-                        Commander
-                    </button>
-                </div>
-            </div>
-
-            <!-- Box Option 3 -->
-            <div class="glass-card p-6 rounded-3xl flex flex-col justify-between relative group border border-slate-800">
-                <div>
-                    <div class="w-full h-40 bg-slate-900 rounded-2xl border border-slate-800 flex items-center justify-center mb-6 overflow-hidden">
-                        <i class="fa-solid fa-microchip text-5xl text-slate-500 group-hover:text-purple-400 group-hover:scale-110 transition duration-300"></i>
-                    </div>
-                    <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300 uppercase">Puissance Ultime</span>
-                    <h3 class="text-lg font-bold text-white mt-2">NVIDIA Shield TV Pro</h3>
-                    <p class="text-xs text-slate-400 mt-1">Processeur Tegra X1+, Upscaling IA 4K, Dolby Vision & Atmos.</p>
-
-                    <ul class="text-xs text-slate-300 space-y-2 my-6">
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Puissance maximale & Gaming</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Amélioration d'image par Intelligence Artificielle</li>
-                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Installation personnalisée à domicile</li>
-                    </ul>
-                </div>
-
-                <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-                    <div>
-                        <span class="text-[10px] text-slate-400">Matériel + Config</span>
-                        <div class="text-xl font-extrabold text-white">249 €</div>
-                    </div>
-                    <button onclick="orderBox('NVIDIA Shield TV Pro', 249)" class="px-4 py-2.5 rounded-xl bg-brand-blue text-slate-950 font-bold text-xs hover:bg-cyan-300 transition">
-                        Commander
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- FAQ & Client Testimonials Section -->
-<section id="faq" class="py-20 bg-slate-950/90 border-t border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- FAQ Section Header -->
-        <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold text-brand-blue uppercase tracking-widest mb-2">F.A.Q</h2>
-            <p class="text-3xl font-extrabold text-white">Questions Fréquemment Posées</p>
-        </div>
-
-        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
-            <div class="glass p-6 rounded-2xl border border-slate-800 space-y-2">
-                <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-brand-blue"></i>
-                    Comment se passe le dépannage à distance ?
-                </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    Nous utilisons un logiciel de prise en main sécurisé (comme AnyDesk ou TeamViewer). Vous nous donnez un code d'accès temporaire et vous voyez tout ce que nous faisons en direct sur votre écran.
+    <!-- Call to Action WhatsApp -->
+    <section class="py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card p-8 sm:p-12 rounded-3xl text-center border-emerald-500/30 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <h2 class="text-3xl font-extrabold text-white mb-4">Un problème ou une question ?</h2>
+                <p class="text-gray-300 max-w-xl mx-auto mb-8">
+                    N'hésitez pas à nous envoyer un message sur WhatsApp. Nous répondons rapidement pour vous conseiller ou convenir d'un rendez-vous.
                 </p>
-            </div>
-
-            <div class="glass p-6 rounded-2xl border border-slate-800 space-y-2">
-                <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-brand-blue"></i>
-                    Pouvez-vous m'aider si je ne parle pas hébreu ?
-                </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    Absolument ! Notre équipe est 100% francophone et trilingue (Français, Anglais, Hébreu). Nous faisons le pont entre vous et les fournisseurs locaux.
-                </p>
-            </div>
-
-            <div class="glass p-6 rounded-2xl border border-slate-800 space-y-2">
-                <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-brand-blue"></i>
-                    Si mon problème n'est pas résolu, que se passe-t-il ?
-                </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    Nous appliquons la règle strict : "Pas de solution, pas de facturation". Si nous ne parvenons pas à résoudre votre panne, l'intervention ne vous est pas facturée.
-                </p>
-            </div>
-
-            <div class="glass p-6 rounded-2xl border border-slate-800 space-y-2">
-                <h4 class="text-sm font-bold text-white flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question text-brand-blue"></i>
-                    Intervenez-vous pour les personnes âgées / seniors ?
-                </h4>
-                <p class="text-xs text-slate-400 leading-relaxed">
-                    Oui, la patience et la pédagogie sont au cœur de nos valeurs. Nous prenons le temps d'expliquer chaque étape et nous laissons des fiches mémo simples écrites.
-                </p>
+                <a href="https://wa.me/972546904887" target="_blank" class="inline-flex items-center gap-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-emerald-600/20 transition-all hover:scale-105">
+                    <i data-lucide="message-circle" class="w-6 h-6"></i>
+                    <span class="text-lg">Envoyer un message au 054-6904887</span>
+                </a>
             </div>
         </div>
+    </section>
 
-    </div>
-</section>
-
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/33100000000" target="_blank" class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl shadow-2xl hover:scale-110 transition duration-300">
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
-
-<!-- Booking & Contact Modal -->
-<div id="bookingModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
-    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        <!-- Backdrop -->
-        <div onclick="closeBookingModal()" class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"></div>
-
-        <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-
-        <!-- Modal Dialog -->
-        <div class="inline-block align-bottom glass border border-slate-700 text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full rounded-3xl p-6 sm:p-8">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-calendar-plus text-brand-blue"></i>
-                    <h3 class="text-base font-bold text-white">Demande de Rendez-Vous</h3>
-                </div>
-                <button onclick="closeBookingModal()" class="text-slate-400 hover:text-white p-1">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
-            </div>
-
-            <form id="bookingForm" onsubmit="submitBooking(event)" class="mt-6 space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 mb-1">Nom & Prénom *</label>
-                    <input type="text" id="formName" required placeholder="Ex: Marc Levy" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue">
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">Téléphone *</label>
-                        <input type="tel" id="formPhone" required placeholder="06 12 34 56 78" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">E-mail</label>
-                        <input type="email" id="formEmail" placeholder="marc@example.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">Intervention</label>
-                        <select id="formMode" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue">
-                            <option value="domicile">À Domicile</option>
-                            <option value="remote">À Distance (Remote)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-300 mb-1">Service Principal</label>
-                        <select id="formService" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue">
-                            <option value="Smart TV & IPTV">Smart TV & IPTV</option>
-                            <option value="WiFi & Réseau">WiFi & Réseau</option>
-                            <option value="Alyah Tech">Pack Alyah</option>
-                            <option value="Box Android">Box Android TV</option>
-                            <option value="PC / Mac / Tablette">PC / Mac / Tablette</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-300 mb-1">Description du besoin ou problème</label>
-                    <textarea id="formDetails" rows="3" placeholder="Décrivez brièvement le problème..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-blue"></textarea>
-                </div>
-
-                <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-indigo to-brand-blue text-white font-bold text-xs shadow-glow hover:opacity-90 transition mt-2">
-                    Confirmer la Demande de Rendez-vous
-                </button>
-            </form>
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Ma Tech Maison - Tous droits réservés.</p>
+            <p class="mt-2">Assistance informatique, TV & Réseau à domicile en Israël.</p>
         </div>
-    </div>
-</div>
+    </footer>
 
-<!-- Notification Toast -->
-<div id="toast" class="fixed bottom-6 left-6 z-50 transform -translate-y-10 opacity-0 transition-all duration-300 pointer-events-none">
-    <div class="glass px-5 py-3 rounded-2xl border border-brand-blue/40 shadow-glow flex items-center gap-3 text-xs font-bold text-white">
-        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
-        <span id="toastText">Action effectuée avec succès !</span>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-slate-950 text-slate-400 text-xs border-t border-slate-900 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div class="flex items-center space-x-3">
-            <div class="w-8 h-8 rounded-xl bg-brand-blue/20 text-brand-blue flex items-center justify-center font-bold">
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-            </div>
-            <span class="text-white font-bold text-sm">MA TECH MAISON</span>
-        </div>
-        <p class="text-slate-500 text-center sm:text-left">
-            Service à domicile & à distance. Support multilingue (Français, Anglais, Hébreu).
-        </p>
-        <p class="text-slate-600">&copy; 2026 Ma Tech Maison. Tous droits réservés.</p>
-    </div>
-</footer>
-
-<script>
-    // --- Data Database ---
-    const estimatorCategories = [
-        { id: 'tv', name: 'Smart TV & IPTV', priceRemote: 39, priceDomicile: 69, icon: 'fa-tv' },
-        { id: 'wifi', name: 'WiFi & Réseau', priceRemote: 49, priceDomicile: 79, icon: 'fa-wifi' },
-        { id: 'pc', name: 'Dépannage PC / Mac', priceRemote: 45, priceDomicile: 75, icon: 'fa-laptop' },
-        { id: 'box', name: 'Config Box Android', priceRemote: 39, priceDomicile: 69, icon: 'fa-box' },
-        { id: 'alyah', name: 'Pack Alyah Complet', priceRemote: 99, priceDomicile: 149, icon: 'fa-plane-arrival' },
-        { id: 'formation', name: 'Formation Individuelle', priceRemote: 35, priceDomicile: 59, icon: 'fa-graduation-cap' }
-    ];
-
-    let currentSelectedCategory = estimatorCategories[0];
-    let currentEstimatorMode = 'remote'; // 'remote' or 'domicile'
-
-    window.onload = function() {
-        renderEstimatorCategories();
-        calculateEstimate();
-    };
-
-    function toggleMobileMenu() {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-    }
-
-    // --- Estimator Component Logic ---
-    function renderEstimatorCategories() {
-        const container = document.getElementById('estimatorCategories');
-        container.innerHTML = estimatorCategories.map((cat, index) => `
-            <button onclick="selectCategory(${index})" id="cat-btn-${index}" class="p-3.5 rounded-2xl glass-card border flex items-center gap-3 text-left transition ${index === 0 ? 'border-brand-blue bg-brand-blue/10' : 'border-slate-800'}">
-                <div class="w-8 h-8 rounded-xl bg-slate-800 text-brand-blue flex items-center justify-center text-sm">
-                    <i class="fa-solid ${cat.icon}"></i>
-                </div>
-                <span class="text-xs font-bold text-white">${cat.name}</span>
-            </button>
-        `).join('');
-    }
-
-    function selectCategory(index) {
-        currentSelectedCategory = estimatorCategories[index];
-        estimatorCategories.forEach((_, i) => {
-            const btn = document.getElementById(`cat-btn-${i}`);
-            btn.classList.remove('border-brand-blue', 'bg-brand-blue/10');
-            btn.classList.add('border-slate-800');
-        });
-        document.getElementById(`cat-btn-${index}`).classList.add('border-brand-blue', 'bg-brand-blue/10');
-        calculateEstimate();
-    }
-
-    function setEstimatorMode(mode) {
-        currentEstimatorMode = mode;
-        const btnRemote = document.getElementById('mode-remote');
-        const btnDomicile = document.getElementById('mode-domicile');
-
-        if (mode === 'remote') {
-            btnRemote.className = 'mode-btn p-4 rounded-2xl glass-card border border-brand-blue/40 bg-brand-blue/10 flex items-center gap-3 text-left transition';
-            btnDomicile.className = 'mode-btn p-4 rounded-2xl glass-card border border-slate-800 flex items-center gap-3 text-left transition';
-        } else {
-            btnDomicile.className = 'mode-btn p-4 rounded-2xl glass-card border border-brand-blue/40 bg-brand-blue/10 flex items-center gap-3 text-left transition';
-            btnRemote.className = 'mode-btn p-4 rounded-2xl glass-card border border-slate-800 flex items-center gap-3 text-left transition';
-        }
-        calculateEstimate();
-    }
-
-    function calculateEstimate() {
-        const basePrice = currentEstimatorMode === 'remote' ? currentSelectedCategory.priceRemote : currentSelectedCategory.priceDomicile;
-        let addonsPrice = 0;
-
-        const addBox = document.getElementById('addAndroidBox').checked;
-        const addWifi = document.getElementById('addWifiRepeater').checked;
-
-        if (addBox) addonsPrice += 89;
-        if (addWifi) addonsPrice += 59;
-
-        const totalPrice = basePrice + addonsPrice;
-
-        document.getElementById('summaryService').innerText = currentSelectedCategory.name;
-        document.getElementById('summaryMode').innerText = currentEstimatorMode === 'remote' ? 'À Distance (Prise en main sécurisée)' : 'À Domicile (Déplacement du technicien)';
-
-        let breakdownHTML = `<div class="flex justify-between"><span>Prestation de base :</span><span class="font-bold text-white">${basePrice} €</span></div>`;
-        if (addBox) breakdownHTML += `<div class="flex justify-between"><span>+ Box Android TV 4K :</span><span class="font-bold text-white">+89 €</span></div>`;
-        if (addWifi) breakdownHTML += `<div class="flex justify-between"><span>+ Répéteur WiFi Mesh :</span><span class="font-bold text-white">+59 €</span></div>`;
-
-        document.getElementById('summaryBreakdown').innerHTML = breakdownHTML;
-        document.getElementById('summaryTotalPrice').innerText = `${totalPrice} €`;
-    }
-
-    function quickSelectService(serviceName) {
-        const foundIndex = estimatorCategories.findIndex(c => c.name.toLowerCase().includes(serviceName.toLowerCase()));
-        if (foundIndex !== -1) {
-            selectCategory(foundIndex);
-        }
-        document.getElementById('estimator').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // --- Modal Control ---
-    function openBookingModal() {
-        document.getElementById('bookingModal').classList.remove('hidden');
-    }
-
-    function closeBookingModal() {
-        document.getElementById('bookingModal').classList.add('hidden');
-    }
-
-    function bookWithEstimate() {
-        document.getElementById('formService').value = currentSelectedCategory.name.includes('Alyah') ? 'Alyah Tech' : 'Smart TV & IPTV';
-        document.getElementById('formMode').value = currentEstimatorMode;
-        openBookingModal();
-    }
-
-    function orderBox(boxModel, price) {
-        document.getElementById('formService').value = 'Box Android';
-        document.getElementById('formDetails').value = `Commande Box Android: ${boxModel} (${price} €)`;
-        openBookingModal();
-    }
-
-    function submitBooking(e) {
-        e.preventDefault();
-        closeBookingModal();
-        showToast("Votre demande a bien été envoyée ! Nous vous rappelons sous 15 min.");
-        e.target.reset();
-    }
-
-    function showToast(msg) {
-        const toast = document.getElementById('toast');
-        document.getElementById('toastText').innerText = msg;
-        toast.classList.remove('-translate-y-10', 'opacity-0');
-        toast.classList.add('translate-y-0', 'opacity-100');
-
-        setTimeout(() => {
-            toast.classList.add('-translate-y-10', 'opacity-0');
-            toast.classList.remove('translate-y-0', 'opacity-100');
-        }, 4000);
-    }
-</script>
+    <!-- Script Lucide Icons Initialization -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
