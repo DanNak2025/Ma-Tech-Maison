@@ -11,3 +11,6 @@
 
 /* Campaign signature: two readable lines at every screen size. */
 .simple-hero h1 em span{display:block}.simple-hero h1 em{display:block}.simple-hero h1 em span:first-child{color:var(--mtm-ink)}
+
+/* MTM Pro wordmark and retained MaTechMaison signature. */
+.brand strong{font-size:19px;line-height:1.15;letter-spacing:-.03em}.brand strong .brand-pro{color:var(--mtm-blue)}.brand small{display:block;font-size:10px;line-height:1.4;white-space:nowrap}.footer-brand strong{font-size:23px}.footer-brand small{font-size:12px}.footer-domain{color:var(--mtm-blue);font-weight:600;white-space:nowrap}.hero-art-wordmark{position:relative;text-align:center;direction:ltr;line-height:1.2}.hero-art-wordmark strong{display:block;font-size:25px;letter-spacing:-.03em}.hero-art-wordmark span{color:var(--mtm-blue)}.hero-art-wordmark small{display:block;font-size:12px;color:var(--muted);margin-top:3px}@media(min-width:701px){.brand strong{font-size:24px}.brand small{font-size:12px}.hero-art{gap:14px}}@media(max-width:350px){.header .brand strong{font-size:17px}.header .brand small{font-size:9px}}

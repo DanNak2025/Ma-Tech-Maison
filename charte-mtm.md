@@ -1,6 +1,8 @@
-# Identité MTM — Ma Tech Maison
+# Identité MTM Pro — MaTechMaison
 
-Signature : « Moins de réglages, plus de plaisir. »
+Nom principal : MTM Pro. Signature de marque : MaTechMaison. Domaine : mtm-pro.com.
+
+Promesse : « Moins de réglages, plus de plaisir. »
 
 Explication du service : « Aide à l’installation et à la configuration, à distance ou sur place. »
 
@@ -14,4 +16,4 @@ Ton : personnel, chaleureux, concret. « Je vous aide », « On regarde ensemble
 
 Déclinaisons : logo transparent ; en-tête et pied de page ; logo décoratif dans l’accueil ; icône du navigateur et raccourci mobile ; visuel de partage brand-share-plaisir.png ; planche branding.html.
 
-Le visuel de partage est référencé via le dépôt public GitHub. Son affichage effectif par les réseaux dépend de leur cache et de la disponibilité de l’image au moment du partage.
+Le visuel de partage est référencé via https://mtm-pro.com/brand-share-plaisir.png, à rendre accessible lors de la connexion du domaine. Son affichage effectif par les réseaux dépend de leur cache et de la disponibilité de l’image au moment du partage.
